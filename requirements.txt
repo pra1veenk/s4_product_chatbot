@@ -1,0 +1,6 @@
+generative-ai-hub-sdk>=1.2.2
+python-dotenv
+hana_ml>=2.19.24013100
+gradio>=4.21.0
+shapely>=2.0.3
+sentence_transformers>=2.5.1
