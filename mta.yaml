@@ -9,7 +9,8 @@ modules:
     parameters: # All parameters are optional and can be deleted - defaults will be taken/detected if non specified.
       docker:   # Schedule a docker image found in that repository instead of staging bits
         image: javieryong271/hana-vs-material-rag-ws:latest # repo/image:tag
-        disk-quota: 10GB
+      disk-quota: 10G
+      memory: 4096M
         # username: <optional username> # credentials to access docker repo
         # password: <optional password>
       instances: 1  #optional
