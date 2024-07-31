@@ -54,7 +54,7 @@ footer {
 LOGO_MARKDOWN = f"""
 ### Platform Architecture & Adoption
 ### (Office of CTO, SAP)
-![Platform & Integration Labs](file/img/blue.svg)
+![Platform Architecture & Adoption](file/img/paa-logo-white.png)
 """
 
 global GENAIHUB_PROXY_CLIENT
