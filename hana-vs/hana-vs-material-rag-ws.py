@@ -10,7 +10,7 @@ from requests.auth import HTTPBasicAuth
 
 from gen_ai_hub.proxy.core import set_proxy_version
 from gen_ai_hub.proxy import GenAIHubProxyClient
-from gen_ai_hub.proxy.langchain import init_llm
+from gen_ai_hub.proxy.langchain import init_llm,init_embedding_model
 from langchain.globals import set_debug
 # set_debug(True)
 
@@ -27,7 +27,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.schema.language_model import BaseLanguageModel
 from langchain.schema.runnable import RunnableSerializable
 from langchain.schema.document import Document
-from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
+#from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain_community.vectorstores.hanavector import HanaDB
 
 from hana_ml import ConnectionContext
@@ -52,13 +52,14 @@ footer {
 """
 
 LOGO_MARKDOWN = f"""
-### APJ Architecture & Platform Advisory
+### Platform Architecture & Adoption
+### (Office of CTO, SAP)
 ![Platform & Integration Labs](file/img/blue.svg)
 """
 
 global GENAIHUB_PROXY_CLIENT
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL","all-MiniLM-L12-v2") 
-DEFAULT_EF = SentenceTransformerEmbeddings(model_name=EMBEDDING_MODEL)
+EMBEDDING_MODEL = 'text-embedding-ada-002'
+DEFAULT_EF = init_embedding_model(EMBEDDING_MODEL)
 S4PROD_URL = "https://my300181.s4hana.ondemand.com/ui#Material-displayFactSheet?Product="
 TABLE_NAME = "S4PRODUCTDATA"
 
@@ -84,7 +85,7 @@ MODELS = [
     {
         "model": "gpt-4-32k", 
         "name": "Azure OpenAI GPT-4 32k", 
-        "desc": "GPT-4 is a large multimodal model (accepting text or image inputs and outputting text) that can solve difficult problems with greater accuracy than any of our previous models, thanks to its broader general knowledge and advanced reasoning capabilities.", 
+        "desc": "GPT-4 32k is an advanced text-based language model that features an expanded context window of 32,000 tokens, enabling it to process and generate extensive and nuanced text. This extended capacity allows it to handle complex and detailed interactions with improved accuracy and depth.", 
         "platform": "SAP Generative AI Hub"
     }
     ]
@@ -238,7 +239,7 @@ def get_product_data(base_url, product_filter, user, password, max_products=None
         )    
     return product_in_text
 
-def embed_product_data(conn: Connection, embed: SentenceTransformerEmbeddings, s4data: list):
+def embed_product_data(conn: Connection, embed, s4data: list):
     success = True
     vector_db = HanaDB(
         embedding=embed, connection=conn, table_name=TABLE_NAME
@@ -405,7 +406,8 @@ def load_products(state: dict)->gr.Button:
 def main()->None:
     args = {}
     args["host"] = os.environ.get("HOSTNAME","0.0.0.0")
-    args["port"] = os.environ.get("HOSTPORT",51030)
+    #logging.info("env port is : "+os.environ.get("PORT"))
+    args["port"] = int(os.environ.get("PORT",3000))
     log_level = int(os.environ.get("APPLOGLEVEL", logging.ERROR))
     if log_level < 10: log_level = 40
     logging.basicConfig(level=log_level,)
