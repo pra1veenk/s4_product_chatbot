@@ -60,7 +60,6 @@ LOGO_MARKDOWN = f"""
 global GENAIHUB_PROXY_CLIENT
 EMBEDDING_MODEL = 'text-embedding-ada-002'
 DEFAULT_EF = init_embedding_model(EMBEDDING_MODEL)
-S4PROD_URL = "https://my300181.s4hana.ondemand.com/ui#Material-displayFactSheet?Product="
 TABLE_NAME = "S4PRODUCTDATA"
 
 SYS_TEMPLATE = """
@@ -292,7 +291,7 @@ def call_llm(state, history, model_name):
     if not state.get("connection"):
         state["connection"] = get_hana_connection(conn_params=state["conn_data"])        
     # Query the product master
-    vector_db = HanaDB(connection=state["connection"], embedding=DEFAULT_EF, table_name="S4PRODUCTDATA")
+    vector_db = HanaDB(connection=state["connection"], embedding=DEFAULT_EF, table_name=TABLE_NAME)
     query = history[-1][0]
     rag_chain = retrieve_data(vector_db=vector_db, llm=state["model"])
     try:
