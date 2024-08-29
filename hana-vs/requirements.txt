@@ -1,6 +1,7 @@
 generative-ai-hub-sdk>=1.2.2
 langchain
 langchain_google_genai
+langchain_aws
 langchain_community
 python-dotenv
 hana_ml>=2.19.24013100
