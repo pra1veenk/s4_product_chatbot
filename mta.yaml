@@ -9,7 +9,7 @@ modules:
     path: ./hana-vs
     parameters: # All parameters are optional and can be deleted - defaults will be taken/detected if non specified.
       buildpack: python_buildpack
-      disk-quota: 1G
+      disk-quota: 2G
       command: python hana-vs-material-rag-ws.py
       memory: 1G
       instances: 1  #optional
