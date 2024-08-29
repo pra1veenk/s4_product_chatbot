@@ -23,7 +23,6 @@ modules:
       AICORE_AUTH_URL: "" # Enter your url from service key
       AICORE_BASE_URL: "" # Enter your AI_API_URL from service key
       AICORE_RESOURCE_GROUP: ""
-      TOKENIZERS_PARALLELISM: "true"
       HOST: "" # Enter your HANA DB SQL Endpoint taken from Step 5
       USERNAME: "" # Enter the HANA Cloud User’s Username 
       PASSWORD: "" # Enter the HANA Cloud User’s Password
