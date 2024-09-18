@@ -76,9 +76,9 @@ HUMAN_TEMPLATE = """
 
 MODELS = [
     {
-        "model": "gpt-35-turbo-16k", 
-        "name": "Azure OpenAI GPT-3.5 Turbo 16k", 
-        "desc": "GPT-3.5 models can understand and generate natural language or code. The most capable and cost effective model in the GPT-3.5 family is gpt-3.5-turbo which has been optimized for chat using the Chat Completions API but works well for traditional completions tasks as well.", 
+        "model": "gpt-35-turbo-0125", 
+        "name": "Azure OpenAI GPT-3.5 Turbo", 
+        "desc": "GPT-3.5 models can understand and generate natural language or code. The most capable and cost effective model in the GPT-3.5 family is gpt-3.5-turbo-0125 which has been optimized for chat using the Chat Completions API but works well for traditional completions tasks as well.", 
         "platform": "SAP Generative AI Hub"
     },
     {
