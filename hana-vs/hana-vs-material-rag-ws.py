@@ -76,15 +76,9 @@ HUMAN_TEMPLATE = """
 
 MODELS = [
     {
-        "model": "gpt-35-turbo-0125", 
-        "name": "Azure OpenAI GPT-3.5 Turbo", 
-        "desc": "GPT-3.5 models can understand and generate natural language or code. The most capable and cost effective model in the GPT-3.5 family is gpt-3.5-turbo-0125 which has been optimized for chat using the Chat Completions API but works well for traditional completions tasks as well.", 
-        "platform": "SAP Generative AI Hub"
-    },
-    {
-        "model": "gpt-4-32k", 
-        "name": "Azure OpenAI GPT-4 32k", 
-        "desc": "GPT-4 32k is an advanced text-based language model that features an expanded context window of 32,000 tokens, enabling it to process and generate extensive and nuanced text. This extended capacity allows it to handle complex and detailed interactions with improved accuracy and depth.", 
+        "model": "gpt-4", 
+        "name": "Azure OpenAI GPT-4", 
+        "desc": "GPT-4 demonstrates advanced capabilities in chat completion, problem-solving, and creative content generation, allowing it to engage in meaningful conversations, tackle complex questions, and produce high-quality written material across a range of topics.", 
         "platform": "SAP Generative AI Hub"
     }
     ]
